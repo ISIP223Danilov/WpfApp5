@@ -13,5 +13,11 @@ namespace WpfApp5
     /// </summary>
     public partial class App : Application
     {
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            // Открываем окно входа
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+        }
     }
 }
