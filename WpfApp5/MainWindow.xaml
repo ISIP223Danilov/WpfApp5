@@ -7,10 +7,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="757*"/>
-            <ColumnDefinition Width="43*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-
+        <Button Click="Button_Click" Content="Назад" Margin="5"></Button>
+        <Frame Name="mainframe" Grid.Row="1" Grid.ColumnSpan="4" NavigationUIVisibility="Hidden"></Frame>
+        <Button Click="Button_Click1" Content="Прически" Grid.Column="1" Margin="5"></Button>
+        <Button Click="Button_Click2" Content="Мастера" Grid.Column="2" Margin="5"></Button>
     </Grid>
 </Window>

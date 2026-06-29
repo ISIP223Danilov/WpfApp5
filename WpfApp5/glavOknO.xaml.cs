@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,33 +12,42 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static WpfApp5.Core;
+
 
 namespace WpfApp5
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для glavOknO.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class glavOknO : Page
     {
-        public MainWindow()
+        public glavOknO()
         {
             InitializeComponent();
+            loaddate();
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (mainframe.NavigationService.CanGoBack)
+            if (Hairsss.SelectedItem != null)
             {
-                mainframe.NavigationService.GoBack();
+                haircuts = Hairsss.SelectedItem as Haircuts;
             }
         }
-        private void Button_Click1(object sender, RoutedEventArgs e)
+
+        private void SortComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            mainframe.NavigationService.Navigate(new glavOknO());
+            switch (SortComboBox.SelectedIndex)
+            {
+                case 0:break
+            }
         }
-        private void Button_Click2(object sender, RoutedEventArgs e)
+        void loaddate()
         {
-            mainframe.NavigationService.Navigate(new Masterss());
+            List <Haircuts> h = context.Haircuts.ToList();
+            Hairsss.ItemsSource = h;
         }
     }
 }
