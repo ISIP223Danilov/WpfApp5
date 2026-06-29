@@ -17,30 +17,32 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Name = "Hairsss" ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="2" Grid.Row="1">
-            
+
+        <!-- Основной список причесок -->
+        <ListBox Name="Hairsss" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2" Grid.Row="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel HorizontalAlignment="Center">
-                        <Image Height="100" Width="160"  Source="{Binding Image}"/>
+                    <!-- Добавлен Margin, чтобы карточки аккуратно стояли отдельно друг от друга -->
+                    <StackPanel HorizontalAlignment="Center" Margin="10" Width="180">
+                        <Image Height="100" Width="160" Source="{Binding Image}" Stretch="UniformToFill"/>
                         <StackPanel VerticalAlignment="Center">
-                            <TextBlock Padding="5" Text="{Binding Name}" TextWrapping="Wrap"/>
-                            <TextBlock Padding="5" Text="{Binding Price, StringFormat=Цена: {0}}"/>
-
+                            <TextBlock Padding="5" Text="{Binding Name}" TextWrapping="Wrap" FontWeight="Bold" HorizontalAlignment="Center"/>
+                            <TextBlock Padding="5" Text="{Binding Price, StringFormat=Цена: {0}}" HorizontalAlignment="Center"/>
                         </StackPanel>
-                        <Button Click="Button_Click" Height="40" Content="Выбрать" ></Button>
+                        <!-- Кнопка вызывает событие Button_Click в коде C# -->
+                        <Button Click="Button_Click" Height="40" Content="Выбрать" Margin="0,5,0,0"></Button>
                     </StackPanel>
-                </DataTemplate>  
+                </DataTemplate>
             </ListBox.ItemTemplate>
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel>
-                        
-                    </WrapPanel>
+                    <WrapPanel Orientation="Horizontal"/>
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>
-        <ComboBox x:Name="SortComboBox" Margin="5" SelectedIndex="0" SelectionChanged="SortComboBox_SelectionChanged">
+
+        <!-- Выпадающий список сортировки -->
+        <ComboBox x:Name="SortComboBox" Margin="5" Grid.Column="0" Grid.Row="0" SelectedIndex="0" SelectionChanged="SortComboBox_SelectionChanged">
             <ComboBoxItem Content="Цена убывание"/>
             <ComboBoxItem Content="Цена увеличение"/>
         </ComboBox>

@@ -39,7 +39,7 @@ namespace WpfApp5
         }
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
-            mainframe.NavigationService.Navigate(new Masterss());
+            mainframe.NavigationService.Navigate(new MastersWindow());
         }
     }
 }
